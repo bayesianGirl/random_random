@@ -1,18 +1,11 @@
 import os
 
-filename="data.txt"
-file= open(filename, "r")
-file1= open("new_data.txt", "w")
-contents=file.readlines()
-for line in contents:
-	x=line.split()
-	file1.write(x[1])
-	file1.write(" ")
-	file1.write(x[2])
-	file1.write(" ")
-	file1.write(x[3])
-	file1.write(" ")
-	file1.write(x[4])
-	file1.write(" ")
-	file1.write(x[5])
-	file1.write("\n")
+dir= os.getcwd()
+for files in os.listdir(dir):
+	if(files.endswith(".txt")):
+		f= open(files, "r")
+		contents= f.readlines()
+		if(len(contents)==0):
+			os.remove(files)
+			image_name= files.split(".")[0]+".jpg"
+			os.remove(image_name)
